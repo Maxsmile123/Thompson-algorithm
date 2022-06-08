@@ -29,7 +29,7 @@ namespace Thompson
 
         private List<Symbol> EpsClosure(List<Symbol> currStates)
         {
-            // Debug("Eps-Closure", currStates);
+
             return EpsClosure(currStates, null);
         }
 
@@ -45,7 +45,7 @@ namespace Thompson
 
                 nextStates = FromStateToStates(currStates[i].ToString(), "");
 
-                // 1. если nextStates = null и это e-clouser
+
                 if (!ReachableStates.Contains(currStates[i]))
                 {
                     ReachableStates.Add(new Symbol(currStates[i].ToString()));
@@ -54,9 +54,7 @@ namespace Thompson
                 if (nextStates != null)
                 {
 
-                    // 1. из одного состояния возможен переход в несколько состояний,
-                    //но это состояние в множестве должно быть только один раз,
-                    //то есть для него выполняется операция объединения
+
                     foreach (var nxt in nextStates)
                     {
                         // Debug("nxt", nxt);
@@ -90,15 +88,14 @@ namespace Thompson
 
         private List<Symbol> FromStateToStates(string currState, string term)
         {
-            var NextStates = new List<Symbol>(); //{currState};
+            var NextStates = new List<Symbol>(); 
             bool flag = false;
             foreach (var d in Delta)
             {
-                // debugDeltaRule("AllRules", d);
+                
                 if (d.LHSQ == currState && d.LHSS == term)
                 {
                     NextStates.Add(new Symbol(d.RHSQ[0].ToString()));
-                    // debugDeltaRule("FromStateToStates DeltaRules", d);
                     flag = true;
                 }
             }
@@ -165,8 +162,6 @@ namespace Thompson
                 {
                     if (name.symbol != null && name.symbol.Contains(f.symbol))
                     {
-                        // Debug("substr",name);
-                        // Debug("f", f);
                         F_.Add(name);
                     }
                 }
@@ -174,7 +169,6 @@ namespace Thompson
             return F_;
         }
 
-        /// Состояние StateTo достижимо по дельта-правилам из состояния currState
 
 
 
@@ -187,46 +181,8 @@ namespace Thompson
             }
             foreach (var sym in list)
                 line += sym.symbol;
-            /*
-                  try
-                  {
-                      var sdt = new mySDTSchemata(new List<Symbol>() { new Symbol("S") },
-                                                  new List<Symbol>() { new Symbol("+"), new Symbol("i") },
-                                                  new List<Symbol>() { new Symbol("+"), new Symbol("i") },
-                                                  new Symbol("S"));
-
-                      sdt.addRule(new Symbol("S"), 
-                                      new List<Symbol>() { new Symbol("+"), new Symbol("S_1"), new Symbol("S_2") }, 
-                                      new List<Symbol>() { new Symbol("S_2"), new Symbol("+"), new Symbol("S_1") });
-
-                      sdt.addRule(new Symbol("S"), 
-                                      new List<Symbol>() { new Symbol("i") }, 
-                                      new List<Symbol>() { new Symbol("i") });
-
-                      Console.Write("\nDebug SDTranslator:");
-                      sdt.debugSDTS();
-
-                      sdt.Translate(new List<Symbol>() { new Symbol("+"), new Symbol("+"), new Symbol("+"), new Symbol("i"), new Symbol("i"), new Symbol("i"), new Symbol("i") });
-
-                  }
-                  catch (Exception e)
-                  {
-                      Console.WriteLine($"\nОшибка: {e.Message}");
-                  }
-            */
-
-            ;
+           
             return line;
-            /*  Debug("key", line);
-                if (names.ContainsKey(line)){
-                object value = names[line];
-                Console.WriteLine("value : " + names[line].ToString());
-                return value.ToString();
-                }
-                else {
-                    names.Add(line, N++);
-                    return N.ToString();
-                }*/
         }
 
         //***  Debug ***//
@@ -271,10 +227,10 @@ namespace Thompson
             Debug("Q0", this.Q0.symbol);
             Debug("F", this.F);
             Console.WriteLine("DeltaList:");
-            foreach (var d in this.Delta) // debugDeltaRule("", d);
+            foreach (var d in this.Delta) 
                 d.Debug();
         }
-    } // end class Automate
+    } 
 
 }
 
