@@ -1,6 +1,4 @@
-﻿
-
-namespace Thompson
+﻿namespace Thompson
 {
   /// Delta: Q x Sigma -> Q
   public  class DeltaQSigma {
@@ -12,10 +10,7 @@ namespace Thompson
       this.LHSS=LHSS;
       this.RHSQ=RHSQ;
     }
-    public virtual void Debug() {
-      Console.WriteLine($" delta({String.Join(",",this.LHSQ)},"+
-                               $"{String.Join(",",this.LHSS)},"+
-                               $"-> ({String.Join(",",this.RHSQ)}");
-    } 
+
+    
   } 
 }

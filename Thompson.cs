@@ -1,4 +1,3 @@
-
 namespace Thompson
 {
 
@@ -29,7 +28,6 @@ namespace Thompson
 
         private List<Symbol> EpsClosure(List<Symbol> currStates)
         {
-
             return EpsClosure(currStates, null);
         }
 
@@ -45,7 +43,6 @@ namespace Thompson
 
                 nextStates = FromStateToStates(currStates[i].ToString(), "");
 
-
                 if (!ReachableStates.Contains(currStates[i]))
                 {
                     ReachableStates.Add(new Symbol(currStates[i].ToString()));
@@ -54,10 +51,8 @@ namespace Thompson
                 if (nextStates != null)
                 {
 
-
                     foreach (var nxt in nextStates)
                     {
-                        // Debug("nxt", nxt);
                         ReachableStates.Add(nxt);
                         next.Add(nxt);
                     }
@@ -92,7 +87,6 @@ namespace Thompson
             bool flag = false;
             foreach (var d in Delta)
             {
-                
                 if (d.LHSQ == currState && d.LHSS == term)
                 {
                     NextStates.Add(new Symbol(d.RHSQ[0].ToString()));
@@ -162,15 +156,13 @@ namespace Thompson
                 {
                     if (name.symbol != null && name.symbol.Contains(f.symbol))
                     {
+
                         F_.Add(name);
                     }
                 }
             }
             return F_;
         }
-
-
-
 
         private string SetName(List<Symbol> list)
         {
@@ -181,11 +173,12 @@ namespace Thompson
             }
             foreach (var sym in list)
                 line += sym.symbol;
-           
+        
             return line;
+           
         }
 
-        //***  Debug ***//
+
         public void Debug(string step, string line)
         {
             Console.Write(step + ": ");

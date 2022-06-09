@@ -1,5 +1,4 @@
-﻿
-namespace Thompson
+﻿namespace Thompson
 {
 
     /// Finite State automata (КА)
@@ -36,29 +35,7 @@ namespace Thompson
                 Console.WriteLine("chineSymbol doesn't belong to language");
         }
 
-        public bool Execute_FSA(string chineSymbol)
-        {  
-            var currState = this.Q0;
-            int flag = 0;
-            int i = 0;
-            for (; i < chineSymbol.Length; i++)
-            {
-                flag = 0;
-                foreach (var d in this.Delta)
-                { 
-                    if (d.LHSQ == currState && d.LHSS == chineSymbol.Substring(i, 1))
-                    {
-                        currState = d.RHSQ[0]; // Для детерминированного КA
-                        flag = 1;
-                        break;
-                    }
-                }
-                if (flag == 0) break;
-            } 
-
-           
-            return (this.F.Contains(currState) && i == chineSymbol.Length);
-        } 
+      
 
     } 
 
